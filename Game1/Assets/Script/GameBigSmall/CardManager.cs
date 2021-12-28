@@ -23,7 +23,11 @@ public class CardManager : MonoBehaviour
 
     [SerializeField] Button card;
     [SerializeField] Button OpencardButton;
+    [SerializeField] Button RepeatButton;
     [SerializeField] Text ResultText;
+    [SerializeField] Text ScoreText;
+
+    int score = 1000;
     int[] poke = new int[52];
     Transform[] endpoke = new Transform[2];
 
@@ -54,7 +58,7 @@ public class CardManager : MonoBehaviour
     public void LicensingComputerCard()
     {
         //ComputerCard = endpoke[0]
-        endpoke[0] = transform.GetChild(Random.Range(1,52));
+        endpoke[0] = transform.GetChild(Random.Range(0,transform.childCount));
         tweener = endpoke[0].transform.DOLocalMove(new Vector3(0,90,0),1);
         endpoke[0].GetComponent<Button>().enabled = false;
     }
@@ -79,7 +83,7 @@ public class CardManager : MonoBehaviour
 
     public void EnabledAllButton()
     {
-        for(int i=0; i < poke.Length ; i++){
+        for(int i=0; i < transform.childCount ; i++){
             transform.GetChild(i).GetComponent<Button>().enabled = false;
         }
         OpencardButton.GetComponent<Button>().enabled = true;
@@ -95,13 +99,36 @@ public class CardManager : MonoBehaviour
         endpoke[0].GetComponentInChildren<Text>().enabled = true;
         endpoke[1].GetComponentInChildren<Text>().enabled = true;
         OpencardButton.GetComponent<Button>().enabled = false;
-        if(int.Parse(endpoke[0].GetComponentInChildren<Text>().text) > int.Parse(endpoke[1].GetComponentInChildren<Text>().text)){
+        RepeatButton.GetComponent<Button>().enabled = true;
+        Invoke( "GameResult" , 1f);
+    }
 
+    void GameResult()
+    {
+        if(int.Parse(endpoke[0].GetComponentInChildren<Text>().text) > int.Parse(endpoke[1].GetComponentInChildren<Text>().text)){
+            ScoreText.text = "分數 : "+ (score-10);
             ResultText.text="<color=#FF0000>你輸了</color>";
+            score -=10;
         }else
         {
+            ScoreText.text = "分數 : "+ (score+10);
             ResultText.text="<color=#00FF00>你贏了</color>";
+            score +=10;
         }
+        Destroy(endpoke[1].gameObject);
+        Destroy(endpoke[0].gameObject);
     }
+
+    public void Gamere()
+    {
+        for(int i = 0,j=0; i < transform.childCount;i++,j+=10)
+        {
+            transform.GetChild(i).transform.localPosition = new Vector3(-255,0,0);
+            tweener = transform.GetChild(i).transform.DOLocalMove(new Vector3(-255+j,0,0),1);
+            transform.GetChild(i).GetComponent<Button>().enabled = true;
+        }
+        Invoke( "LicensingComputerCard" , 1f);
+    }
+
 }
 

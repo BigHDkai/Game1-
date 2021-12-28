@@ -8,24 +8,9 @@ using DG.Tweening;
 public class CardMove : MonoBehaviour
 {
     Tweener tweener;
-
-    string state = "";
     public void CardsClick()
     {
-        if(state == "cardsup")
-        {
-            CardsShow();
-        }else
-        {
-            CardsUp();
-        }
-    }
-
-    void CardsUp()
-    {
-        transform.position += new Vector3(0,10,0);
-        state = "cardsup";
-        
+        CardsShow();
     }
 
     void CardsShow()
