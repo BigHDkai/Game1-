@@ -61,6 +61,7 @@ public class CardManager : MonoBehaviour
         endpoke[0] = transform.GetChild(Random.Range(0,transform.childCount));
         tweener = endpoke[0].transform.DOLocalMove(new Vector3(0,90,0),1);
         endpoke[0].GetComponent<Button>().enabled = false;
+        Destroy(endpoke[0].GetComponent<CardMove>());
     }
 
 
@@ -92,6 +93,7 @@ public class CardManager : MonoBehaviour
     public void Mycard(Transform mycard)
     {
         endpoke[1] = mycard;
+        Destroy(endpoke[1].GetComponent<CardMove>());
     }
     
     public void OpenCards()
