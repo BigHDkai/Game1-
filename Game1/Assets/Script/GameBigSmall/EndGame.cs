@@ -22,7 +22,7 @@ public class EndGame : MonoBehaviour
 
     public void ClickRepeatButtontMove()
     {        
-            Invoke( "RepeatButtontMove" , 1f);
+        Invoke( "RepeatButtontMove" , 1f);
     }
 
     public void RepeatGame()

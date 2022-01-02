@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 public class CardMove : Button
 {
     Tweener tweener;
-    public void CardsClick()
+    public override void OnPointerClick(PointerEventData eventData)
     {
         CardsShow();
     }
@@ -16,8 +16,8 @@ public class CardMove : Button
     void CardsShow()
     {
         tweener = transform.DOLocalMove(new Vector3(0,-90,0),1);
-        transform.GetComponentInParent<CardManager>().EnabledAllButton();
         transform.GetComponentInParent<CardManager>().Mycard(this.transform);
+        transform.GetComponentInParent<CardManager>().EnabledAllButton();
     }
     
     public override void OnPointerEnter(PointerEventData eventData)

@@ -29,7 +29,7 @@ public class CardManager : MonoBehaviour
 
     int score = 1000;
     int[] poke = new int[52];
-    Transform[] endpoke = new Transform[2];
+    public Transform[] endpoke = new Transform[2];
 
 
 
@@ -48,6 +48,7 @@ public class CardManager : MonoBehaviour
         for(int i = 0 ,j=0; i < poke.Length;i++,j+=10)
         {
             var cards = Instantiate(card ,transform.localPosition,new Quaternion(0,0,0,0) ,transform);
+            cards.GetComponent<Button>().enabled = false;
             cards.GetComponentInChildren<Text>().text = poke[i].ToString();
             cards.GetComponentInChildren<Text>().enabled = false;
             cards.transform.localPosition = new Vector3(-255,0,0);
@@ -57,6 +58,9 @@ public class CardManager : MonoBehaviour
 
     public void LicensingComputerCard()
     {
+        for(int i=0; i < transform.childCount ; i++){
+            transform.GetChild(i).GetComponent<Button>().enabled = true;
+        }
         //ComputerCard = endpoke[0]
         endpoke[0] = transform.GetChild(Random.Range(0,transform.childCount));
         tweener = endpoke[0].transform.DOLocalMove(new Vector3(0,90,0),1);
@@ -94,12 +98,16 @@ public class CardManager : MonoBehaviour
     {
         endpoke[1] = mycard;
         Destroy(endpoke[1].GetComponent<CardMove>());
+        var GetNote = GameObject.Find("Content");
+        GetNote.GetComponent<NoteManager>().SetNoteEndpoke(endpoke[0],endpoke[1]);
     }
-    
+
     public void OpenCards()
     {
-        endpoke[0].GetComponentInChildren<Text>().enabled = true;
-        endpoke[1].GetComponentInChildren<Text>().enabled = true;
+        //endpoke[0].GetComponentInChildren<Text>().enabled = true;
+        //endpoke[1].GetComponentInChildren<Text>().enabled = true;
+        endpoke[0].GetComponent<Button>().image.sprite = Resources.Load<Sprite>("pokeImage/"+endpoke[0].GetComponentInChildren<Text>().text);
+        endpoke[1].GetComponent<Button>().image.sprite = Resources.Load<Sprite>("pokeImage/"+endpoke[1].GetComponentInChildren<Text>().text);
         OpencardButton.GetComponent<Button>().enabled = false;
         RepeatButton.GetComponent<Button>().enabled = true;
         Invoke( "GameResult" , 1f);
