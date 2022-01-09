@@ -32,7 +32,6 @@ public class EndGame : MonoBehaviour
         transform.GetChild(2).gameObject.SetActive(true);
         //RepeatButtontMoveOut
         transform.GetChild(4).transform.localPosition = new Vector3(250,-300,0);
-        transform.GetChild(4).GetComponent<Button>().enabled = false;
     }
 
 

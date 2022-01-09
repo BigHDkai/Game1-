@@ -26,14 +26,12 @@ public class CardManager : MonoBehaviour
     [SerializeField] Button RepeatButton;
     [SerializeField] Text ResultText;
     [SerializeField] Text ScoreText;
-
-    int score = 1000;
     int[] poke = new int[52];
     public Transform[] endpoke = new Transform[2];
 
 
 
-    void Start()
+    public void StartGame()
     {
         Main();
         CardManager.instance = this;
@@ -98,7 +96,7 @@ public class CardManager : MonoBehaviour
     {
         endpoke[1] = mycard;
         Destroy(endpoke[1].GetComponent<CardMove>());
-        var GetNote = GameObject.Find("Content");
+        var GetNote = GameObject.Find("BigSmallNote");
         GetNote.GetComponent<NoteManager>().SetNoteEndpoke(endpoke[0],endpoke[1]);
     }
 
@@ -116,14 +114,12 @@ public class CardManager : MonoBehaviour
     void GameResult()
     {
         if(int.Parse(endpoke[0].GetComponentInChildren<Text>().text) > int.Parse(endpoke[1].GetComponentInChildren<Text>().text)){
-            ScoreText.text = "分數 : "+ (score-10);
+            ScoreText.text = (int.Parse(ScoreText.text)-10).ToString();
             ResultText.text="<color=#FF0000>你輸了</color>";
-            score -=10;
         }else
         {
-            ScoreText.text = "分數 : "+ (score+10);
+            ScoreText.text = (int.Parse(ScoreText.text)+10).ToString();
             ResultText.text="<color=#00FF00>你贏了</color>";
-            score +=10;
         }
         Destroy(endpoke[1].gameObject);
         Destroy(endpoke[0].gameObject);
