@@ -13,6 +13,7 @@ public class HallBigSmallButton : Button
         ShareObj.transform.GetChild(1).gameObject.SetActive(false);
         ShareObj.transform.GetChild(2).gameObject.SetActive(false);
         ShareObj.transform.GetChild(3).gameObject.SetActive(false);
+        ShareObj.transform.GetChild(4).gameObject.SetActive(false);
         //開始比大小
         var GameBigSmall=GameObject.Find("GameBigSmall");
         GameBigSmall.GetComponent<Canvas>().enabled = true;

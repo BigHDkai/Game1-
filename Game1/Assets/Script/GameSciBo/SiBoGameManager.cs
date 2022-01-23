@@ -18,6 +18,7 @@ public class SiBoGameManager : MonoBehaviour
 
     [SerializeField] int[] EndDicenum = new int[3];
 
+    [SerializeField] Text ScoreText;
 
     public void BigCreativityChips()
     {
@@ -85,6 +86,7 @@ public class SiBoGameManager : MonoBehaviour
         }
     }
 
+    //結算
     public void EndGame()
     {
         if(EndDicenum[0] == EndDicenum[1] & EndDicenum[1]==EndDicenum[2])
@@ -103,6 +105,22 @@ public class SiBoGameManager : MonoBehaviour
             Debug.Log("大");
             Debug.Log(EndGamenum);
         }
+        var ResultText = GameObject.Find("ResultText");
+        if(EndGamenum > 0 )
+        {
+            ResultText.GetComponent<Text>().text = "<color=#00FF00>你贏了 " + EndGamenum.ToString() + "</color>";
+            ResultText.transform.localPosition = new Vector3 (0,0,0);
+        }else
+        {
+            ResultText.GetComponent<Text>().text = "<color=#FF0000>你輸了 " + EndGamenum.ToString() + "</color>";
+            ResultText.transform.localPosition = new Vector3 (0,0,0);
+        }
+        GameObject.Find("SciBoContent").GetComponent<SicBoNotManager>().SetNote(EndDicenum[0],EndDicenum[1],EndDicenum[2],EndGamenum);
+        ScoreText.text = (int.Parse(ScoreText.text) + EndGamenum).ToString();
+        BigChipsnum = 0;
+        LeopardChipsnum = 0;
+        SmallChipsnum = 0;
+        EndGamenum = 0;
     }
 
 
@@ -145,4 +163,6 @@ public class SiBoGameManager : MonoBehaviour
         TenButton.transform.GetChild(0).GetComponent<Image>().color = new Color32(255,0,0,255); 
     }
     
+    
+
 }

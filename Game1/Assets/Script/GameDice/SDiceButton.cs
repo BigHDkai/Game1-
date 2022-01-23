@@ -32,7 +32,7 @@ public class SDiceButton : Button
     }
     void ResultTextMove()
     {
-        var ResultText = GameObject.Find("ResultText");
+        var ResultText = GameObject.Find("DiceResultText");
         ResultText.GetComponent<EndDiceGame>().ClickResultTextMove();
     }
     void RepeatButtontMove()
@@ -45,7 +45,7 @@ public class SDiceButton : Button
     {
         var MyDice = GameObject.Find("MyDice");
         MyDice.GetComponent<MyDiceManager>().EndGame();
-        var asd = GameObject.Find("Content");
+        var asd = GameObject.Find("DiceContent");
         asd.GetComponent<Notemanager>().CreativityNote();
     }
 

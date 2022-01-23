@@ -47,37 +47,37 @@ public class MyDiceManager : MonoBehaviour
             DiceSetNum();
             MyNum = c+d;
             ShakeDice.GetComponentInChildren<Text>().text = "開牌";
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteMyDice(a,b,c,d);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteMyDice(a,b,c,d);
         }else if(a==c)
         {
             DiceSetNum();
             MyNum = b+d;
             ShakeDice.GetComponentInChildren<Text>().text = "開牌";
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteMyDice(a,c,b,d);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteMyDice(a,c,b,d);
         }else if(a==d)
         {
             DiceSetNum();
             MyNum = b+c;
             ShakeDice.GetComponentInChildren<Text>().text = "開牌";
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteMyDice(a,d,b,c);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteMyDice(a,d,b,c);
         }else if(b==c)
         {
             DiceSetNum();
             MyNum = a+d;
             ShakeDice.GetComponentInChildren<Text>().text = "開牌";
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteMyDice(b,c,a,d);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteMyDice(b,c,a,d);
         }else if(b==d)
         {
             DiceSetNum();
             MyNum = a+c;
             ShakeDice.GetComponentInChildren<Text>().text = "開牌";
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteMyDice(b,d,a,c);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteMyDice(b,d,a,c);
         }else if(c==d)
         {
             DiceSetNum();
             MyNum = a+b;
             ShakeDice.GetComponentInChildren<Text>().text = "開牌";
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteMyDice(c,d,a,b);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteMyDice(c,d,a,b);
         }else
         {
             DiceSetNum();

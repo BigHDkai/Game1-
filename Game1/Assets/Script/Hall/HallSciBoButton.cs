@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class HallDiceButton : Button
+public class HallSciBoButton : Button
 {
     public override void OnPointerClick(PointerEventData eventData)
     {
@@ -14,10 +14,8 @@ public class HallDiceButton : Button
         ShareObj.transform.GetChild(2).gameObject.SetActive(false);
         ShareObj.transform.GetChild(3).gameObject.SetActive(false);
         ShareObj.transform.GetChild(4).gameObject.SetActive(false);
-        //開始比骰子
-        var GameDice=GameObject.Find("GameDice");
-        GameDice.GetComponent<Canvas>().enabled = true;
-        var ComputerDice=GameObject.Find("ComputerDice");
-        ComputerDice.GetComponent<ComputerDiceManager>().DiceNum();
+        //開始比骰寶
+        var GameSciBo=GameObject.Find("GameSciBo");
+        GameSciBo.GetComponent<Canvas>().enabled = true;
     }
 }

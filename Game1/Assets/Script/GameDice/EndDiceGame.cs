@@ -35,8 +35,8 @@ public class EndDiceGame : MonoBehaviour
     public void RepeatGame()
     {
         transform.GetChild(5).transform.localPosition = new Vector3(250,-300,0);
-        var ResultText = GameObject.Find("ResultText");
-        ResultText.GetComponent<EndDiceGame>().ResultTextMoveOut();
+        var DiceResultText = GameObject.Find("DiceResultText");
+        DiceResultText.GetComponent<EndDiceGame>().ResultTextMoveOut();
         for(int i =0;i<4;i++){
             Destroy(transform.GetChild(0).GetChild(i).gameObject);
         }

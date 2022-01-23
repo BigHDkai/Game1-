@@ -41,32 +41,32 @@ public class ComputerDiceManager : MonoBehaviour
         {
             DiceSetNum();
             ComputerDiceNum = c+d;
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteComputerDice(a,b,c,d);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteComputerDice(a,b,c,d);
         }else if(a==c)
         {
             DiceSetNum();
             ComputerDiceNum = b+d;
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteComputerDice(a,c,b,d);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteComputerDice(a,c,b,d);
         }else if(a==d)
         {
             DiceSetNum();
             ComputerDiceNum = b+c;
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteComputerDice(a,d,b,c);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteComputerDice(a,d,b,c);
         }else if(b==c)
         {
             DiceSetNum();
             ComputerDiceNum = a+d;
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteComputerDice(b,c,a,d);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteComputerDice(b,c,a,d);
         }else if(b==d)
         {
             DiceSetNum();
             ComputerDiceNum = a+c;
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteComputerDice(b,d,a,c);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteComputerDice(b,d,a,c);
         }else if(c==d)
         {
             DiceSetNum();
             ComputerDiceNum = a+b;
-            GameObject.Find("Content").GetComponent<Notemanager>().SetNoteComputerDice(c,d,a,b);
+            GameObject.Find("DiceContent").GetComponent<Notemanager>().SetNoteComputerDice(c,d,a,b);
         }else
         {
             DiceNum();
